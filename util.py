@@ -36,7 +36,7 @@ def plot_feature_importances(feature_importances, feature_names, method_name, sa
     
     saved_text = f' * Saved {pathname}'
     if save_folder is not None:
-        saved_text += f' to {save_folder}'
+        saved_text += f' to {save_folder} folder'
     saved_text += '! ';
     print('=' * len(saved_text))
     print(saved_text)
