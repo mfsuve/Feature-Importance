@@ -22,7 +22,8 @@ Usage can be seen by;
       -T {regression,binary,multiclass}, --type {regression,binary,multiclass}
                             Type of the operation (default: "binary")
       -f FOLDER, --folder FOLDER
-                            Folder name for plot to be saved (Optional)
+                            Folder name for plot to be saved (Optional, Creates
+                            the folder if it doesn't exist)
 
     required arguments:
       -x X, --X X           Path for a csv file to use as data
