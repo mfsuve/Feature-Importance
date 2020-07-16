@@ -6,12 +6,7 @@ from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.preprocessing import StandardScaler
-try:
-    from util import plot_feature_importances
-except ModuleNotFoundError:
-    import sys, os
-    sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
-    from util import plot_feature_importances
+from util import plot_feature_importances
 from lgbm import lightGBM
 import pandas as pd
 import numpy as np
@@ -31,6 +26,7 @@ def linear_regression(args, X, y):
     
     
 def decision_tree(args, X, y):
+    '''X needs to be a DataFrame with column names'''
     if args.type == 'regression':
         model = DecisionTreeRegressor()
     else:
@@ -44,6 +40,7 @@ def decision_tree(args, X, y):
     
 
 def random_forest(args, X, y):
+    '''X needs to be a DataFrame with column names'''
     if args.type == 'regression':
         model = RandomForestRegressor()
     else:
@@ -57,6 +54,7 @@ def random_forest(args, X, y):
 
 
 def permutation(args, X, y):
+    '''X needs to be a DataFrame with column names'''
     if args.type == 'regression':
         model = KNeighborsRegressor()
         scoring = 'neg_mean_squared_error'
