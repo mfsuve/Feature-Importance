@@ -2,6 +2,7 @@
 
 A simple python module for investigating the feature importances for a given data.
 
+## Usage
 Usage can be seen by;
 
     >> python feature_importance.py -h
@@ -28,5 +29,12 @@ Usage can be seen by;
     required arguments:
       -x X, --X X           Path for a csv file to use as data
       -t TARGET, --target TARGET
-                         Column number of the data to treat as labels (Negative
-                         values are supported to count from the end)
+                            Column number of the data to treat as labels (Negative
+                            values are supported to count from the end)
+                            
+### Example Usage
+For testing the module, you can run this command:
+
+    python feature_importance.py -x iris.csv -t -1 -f importances --all
+
+This command will create a folder called `importances` and save all plot images about the feature importances of iris data using all methods defined in the module.
