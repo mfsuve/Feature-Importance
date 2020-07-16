@@ -42,12 +42,3 @@ def lightGBM(args, X, y, num_boost_round=300):
         plot_feature_importances(clf.feature_importance(), X.columns, 'lgbm')
     else:
         plot_feature_importances(clf.feature_importance(), X.columns, 'lgbm', args.folder)
-    
-
-if __name__ == '__main__':
-    print('Working on iris dataset. To use this with some other data, please work with feature_importance.py.')
-    from sklearn import datasets
-    iris = datasets.load_iris()
-    X = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-    y = iris.target
-    lightGBM(None, X, y)
