@@ -33,8 +33,10 @@ Usage can be seen by;
                             values are supported to count from the end)
                             
 ### Example Usage
-For testing the module, you can run this command:
+To quickly test the module, you can run these commands:
 
+    git clone https://github.com/mfsuve/Feature-Importance.git
+    cd Feature-Importance
     python feature_importance.py -x iris.csv -t -1 -f importances --all
 
-This command will create a folder called `importances` and save all plot images about the feature importances of iris data using all methods defined in the module.
+These commands will create a folder called `importances` and save all plot images about the feature importances of iris data using all methods defined in the module.
