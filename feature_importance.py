@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.neighbors import KNeighborsRegressor, KNeighborsClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.preprocessing import StandardScaler
-from util import plot_feature_importances
+from util import plot_feature_importances, fix_columns
 from lgbm import lightGBM
 import pandas as pd
 import numpy as np
@@ -74,6 +74,7 @@ def permutation(args, X, y):
 def main(args):
     try:
         X = pd.read_csv(args.X)
+        X = fix_columns(X)
         y = X.iloc[:, args.target]
     except FileNotFoundError:
         print(f'Error: {args.X} does not exists.')

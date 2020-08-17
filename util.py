@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set()
 import os
+import re
 from datetime import datetime
 
 
@@ -41,3 +42,10 @@ def plot_feature_importances(feature_importances, feature_names, method_name, sa
     print('=' * len(saved_text))
     print(saved_text)
     print('=' * len(saved_text))
+
+
+def fix_columns(X):
+    translationTable = str.maketrans("ÂâÜüŞşĞğİıÇçÖö", "AaUuSsgGIiCcOo")
+    X = X.rename(columns = lambda x:x.translate(translationTable))
+    # df = df.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
+    return X
