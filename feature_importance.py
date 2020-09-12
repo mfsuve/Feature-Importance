@@ -73,7 +73,7 @@ def permutation(args, X, y):
 
 def main(args):
     try:
-        X = pd.read_csv(args.X)
+        X = pd.read_csv(args.X, header=None if args.noheader else 0, sep=args.sep)
         X = fix_columns(X)
         y = X.iloc[:, args.target]
     except FileNotFoundError:
@@ -115,7 +115,20 @@ if __name__ == '__main__':
     
     parser.add_argument('-T', '--type', choices=['regression', 'binary', 'multiclass'], default='binary', help='Type of the operation (default: "binary")')
     parser.add_argument('-f', '--folder', type=str, help='Folder name for plot to be saved (Optional, Creates the folder if it doesn\'t exist)')
+    parser.add_argument('--noheader', action='store_true', help='csv data to be loaded has no header (i.e. column names)')
+    parser.add_argument('-s', '--sep', choices=[',', ';', '\t', ' ', '-', 'comma', 'semicolon', 'tab', 'space', 'dash'], default=',', help='Delimiter to use (default: ",")', metavar='{comma,semicolon,tab,space,dash}')
     args = parser.parse_args()
+    
+    if args.sep == 'comma':
+        args.sep = ','
+    elif args.sep == 'semicolon':
+        args.sep = ';'
+    elif args.sep == 'tab':
+        args.sep = '\t'
+    elif args.sep == 'space':
+        args.sep = ' '
+    elif args.sep == 'dash':
+        args.sep = '-'
     
     main(args)
     
